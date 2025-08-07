@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Studio Derbyshire</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    dotlottie-wc {
+      width: 300px;
+      height: 300px;
+      z-index: 10;
+    }
+
+    .frame {
+      width: 300px;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      z-index: 1;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #fff;
+      color: #111;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      opacity: 0;
+      z-index: 999;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔁 Animation -->
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+  <dotlottie-wc
+    id="myAnimation"
+    src="https://lottie.host/1f9a985e-c221-4f3e-b5cc-acae578a756d/aAQDhNy2YC.lottie"
+    autoplay
+    loop
+  ></dotlottie-wc>
+
+  <!-- 🎨 Framed Art -->
+  <div class="frame" id="art1"></div>
+
+  <!-- 🚪 Button -->
+  <button id="enterBtn">Enter Gallery</button>
+
+  <!-- 🌑 Transition Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+    const artFrame = document.getElementById("art1");
+    const enterBtn = document.getElementById("enterBtn");
+    const overlay = document.getElementById("overlay");
+
+    // Set the image
+    artFrame.style.backgroundImage = "url('images/entry.jpg')";
+
+    enterBtn.addEventListener("click", () => {
+      // Zoom into the image
+      gsap.to(artFrame, {
+        scale: 4,
+        duration: 1.2,
+        ease: "power4.inOut"
+      });
+
+      // Fade to black
+      gsap.to(overlay, {
+        delay: 1,
+        opacity: 1,
+        duration: 0.6,
+        onComplete: () => {
+          window.location.href = "gallery.html";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

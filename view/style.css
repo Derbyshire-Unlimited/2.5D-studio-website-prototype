@@ -1,0 +1,126 @@
+/* Reset & Base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background: #e5dcc5; /* warm beige base */
+  background-image: url('https://www.transparenttextures.com/patterns/crissxcross.png'),
+    linear-gradient(to bottom right, #f5f0e6, #d8cbb3);
+  background-repeat: repeat;
+  background-size: auto, cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #3c3c3c;
+}
+
+/* Main Entry Frame */
+.entry {
+  margin-top: 20px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(255, 248, 230, 0.8),
+              0 0 120px rgba(255, 238, 200, 0.4);
+}
+
+.entry img {
+  display: block;
+  max-width: 320px;
+  height: auto;
+  border-radius: 8px;
+  border: 4px solid #d3c4a3;
+}
+
+/* Decorative Statues Row */
+.statue-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 80px 0;
+  box-sizing: border-box;
+}
+
+.statue {
+  width: 100px;
+  height: auto;
+  filter: grayscale(100%) brightness(0.9);
+  opacity: 0.85;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Gallery container */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 60px;
+  padding: 80px;
+  max-width: 1200px;
+  width: 100%;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* Cracked wall texture overlay */
+.gallery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/cracked-natural.png');
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Art frame */
+.frame {
+  background-color: #f9f5ec;
+  padding: 12px;
+  border: 6px solid #bfae94;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
+              0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle crack effect inside the frame */
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/scratched-metal.png');
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hover effect */
+.frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3),
+              0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Image inside frame */
+.art {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* No scrolling when zoomed */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
